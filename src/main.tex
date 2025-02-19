@@ -1,0 +1,160 @@
+% Preamble
+\documentclass[12pt, a4paper]{report}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath} % wspiera polsie znaki lepiej od mathptmx
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{url}
+
+\usepackage{tocloft}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\renewcommand{\listfigurename}{Spis rysunków}
+\renewcommand{\listtablename}{Spis tabel}
+\renewcommand{\lstlistlistingname}{Spis listingów}
+
+\usepackage[a4paper,top=25mm,right=20mm,bottom=25mm,left=35mm]{geometry} % marginesy
+\setlength{\parindent}{1cm} % Wcięcia akapitu
+
+\graphicspath{{images/}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Przykładowe zdefiniowanie składni do listingów w LaTeX dla TypeScript
+\lstdefinelanguage{TypeScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with, let, const, async, await},
+  ndkeywords={class, export, boolean, throw, implements, import, interface, type, this, extends, public, private, protected, readonly, enum, namespace, declare},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`,
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  sensitive=true
+}
+
+\lstset{
+   language=TypeScript,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+% Przykładowe zdefiniowanie składni do listingów w LaTeX dla Vue
+\lstdefinelanguage{Vue}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with, let, const, async, await},
+  ndkeywords={class, export, boolean, throw, implements, import, this, extends, public, private, protected, readonly, v-bind, v-if, v-else, v-else-if, v-for, v-model, v-on, v-show, v-slot, v-pre, v-cloak, template, component, props, data, methods, computed, watch, emits, setup, template, NuxtLayout, NuxtPage},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`,
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  sensitive=true
+}
+
+\lstset{
+   language=Vue,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{
+    % linktocpage, % option to only link the page numbers and not the entire table of contents; when links are being coloured the default behaviour can be a bit overwhelming.
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=black,  %choose some color if you want links to stand out
+    citecolor=black,
+    urlcolor=black,
+}
+
+% Document
+\begin{document}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\tableofcontents
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+
+
+    \chapter{Wprowadzenie}\label{ch:wprowadzenie}
+    \input{chapters/introduction}
+
+
+    \chapter{Analiza wymagań}\label{ch:analiza-wymagan}
+    \input{chapters/chapter02}
+
+
+    \chapter{Wybór technologii}\label{ch:wybor-technologii}
+    \input{chapters/chapter03}
+
+
+    \chapter{Realizacja}\label{ch:realizacja}
+    \input{chapters/chapter04}
+
+
+    \chapter{Prezentacja aplikacji}\label{ch:prezentacja-aplikacji}
+    \input{chapters/chapter05}
+
+
+    \chapter{Podsumowanie}\label{ch:podsumowanie}
+    \input{chapters/conclusion}
+
+    \newpage
+    \renewcommand{\thepage}{}
+
+    \bibliography{main}
+    \bibliographystyle{plain}
+    \addcontentsline{toc}{chapter}{Bibliografia}
+
+    \thispagestyle{empty}
+    \listoffigures
+    \listoftables
+    \lstlistoflistings
+    \clearpage
+    \pagenumbering{arabic}
+\end{document}
